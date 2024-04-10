@@ -1,0 +1,40 @@
+#include<stdio.h>
+
+int shell(int a[],int r, int temp){
+
+    for(int gap =r/2;gap>0;gap/=2){
+        for(int i=gap;i<r;i++){
+
+            int temp=a[i];
+            int j=i;
+            while(j>=gap && a[j-gap]>temp){
+
+                a[j]=a[j-gap];
+                j-=gap;
+            }
+            a[j]=temp;
+        }
+    }
+}
+void printarr(int a[],int r, int temp){
+
+    for(int i=0;i<r;i++){
+        printf("%d\t",a[i]);
+    }
+}
+
+int main(){
+    int a[40],r,temp;
+    printf("enter a range=");
+    scanf("%d",&r);
+
+    printf("enter a %d number =",r);
+
+    for(int i=0;i<r;i++){
+
+        scanf("%d",&a[i]);
+    }
+    shell(a,r,temp);
+    printarr(a,r,temp);
+    return 0;
+}
